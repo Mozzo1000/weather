@@ -17,5 +17,5 @@ An example React app for showing weather information using [OpenWeather](https:/
   * Get GPS location by default 
 
 ## License
-This project is licenced under the Apache License, Version 2.0. See See [LICENSE](https://github.com/Mozzo1000/weather/blob/master/LICENSE) for the full license.
+This project is licenced under the Apache License, Version 2.0. See [LICENSE](https://github.com/Mozzo1000/weather/blob/master/LICENSE) for the full license.
 
