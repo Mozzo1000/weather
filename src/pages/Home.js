@@ -39,7 +39,7 @@ function Home() {
                     <Grid className="grid-primary" item xs={12} sm={6} md={4}>
                         <Typography variant="h4" style={{paddingTop: 10}}>{weatherData.name}, {weatherData.sys.country}</Typography>
                         <Typography variant="subtitle1">{weatherData.weather[0].description}</Typography>
-                        <Image src="/icons/04d.svg" imageStyle={{height: 300}} style={{backgroundColor: "transparent", paddingTop: "calc(70%)"}}/>
+                        <Image src={`/icons/${weatherData.weather[0].icon}.svg`} imageStyle={{height: 300}} style={{backgroundColor: "transparent", paddingTop: "calc(70%)"}}/>
                         <Typography variant="h2"><strong>{Math.round(weatherData.main.temp)}°C</strong></Typography>
                         <Typography variant="subtitle1">Feels like {Math.round(weatherData.main.feels_like)}°C</Typography>
                     </Grid>
@@ -55,19 +55,19 @@ function Home() {
                             <TextField label="Search by city" variant="outlined" fullWidth/>
                         </Grid>
                         <Grid item xs={6} sm={4} md={4}>
-                            <WeatherCard image="/icons/04d.svg" name="Humidity" value={weatherData.main.humidity + "%"} />
+                            <WeatherCard image="/icons/humidity.png" name="Humidity" value={weatherData.main.humidity + "%"} />
                         </Grid>
                         <Grid item xs={6} sm={4} md={4}>
-                            <WeatherCard image="/icons/04d.svg" name="Wind speed" value={weatherData.wind.speed + "m/s"} />
+                            <WeatherCard image="/icons/wind.png" name="Wind speed" value={weatherData.wind.speed + "m/s"} />
                         </Grid>
                         <Grid item xs={6} sm={4} md={4}>
-                            <WeatherCard image="/icons/04d.svg" name="Visibilty" value={(weatherData.visibility / 1000).toPrecision(2) + "km"} />
+                            <WeatherCard image="/icons/binoculars.png" name="Visibilty" value={(weatherData.visibility / 1000).toPrecision(2) + "km"} />
                         </Grid>
                         <Grid item xs={6} sm={4} md={4}>
-                            <WeatherCard image="/icons/04d.svg" name="Sunrise" value={parseInt(convertTime(weatherData.sys.sunrise, weatherData.timezone)[0].split(":")[0]) + ":" + parseInt(convertTime(weatherData.sys.sunrise, weatherData.timezone)[0].split(":")[1])} />
+                            <WeatherCard image="/icons/sunrise.png" name="Sunrise" value={parseInt(convertTime(weatherData.sys.sunrise, weatherData.timezone)[0].split(":")[0]) + ":" + parseInt(convertTime(weatherData.sys.sunrise, weatherData.timezone)[0].split(":")[1])} />
                         </Grid>
                         <Grid item xs={6} sm={4} md={4}>
-                            <WeatherCard image="/icons/04d.svg" name="Sunset" value={parseInt(convertTime(weatherData.sys.sunset, weatherData.timezone)[0].split(":")[0]) + ":" + parseInt(convertTime(weatherData.sys.sunset, weatherData.timezone)[0].split(":")[1])} />
+                            <WeatherCard image="/icons/sunset.png" name="Sunset" value={parseInt(convertTime(weatherData.sys.sunset, weatherData.timezone)[0].split(":")[0]) + ":" + parseInt(convertTime(weatherData.sys.sunset, weatherData.timezone)[0].split(":")[1])} />
                         </Grid>
                     </Grid>
                     </Grid>
