@@ -1,0 +1,15 @@
+.grid-container {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.grid-primary {
+    background-color: transparent;
+    text-align: center;
+}
+
+.grid-secondary {
+    background-color: #f7f7f7;
+    padding: 30px;
+}

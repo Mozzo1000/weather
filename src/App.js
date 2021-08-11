@@ -1,7 +1,8 @@
+import Home from "./pages/Home"
 
 function App() {
   return (
-    <p>Hello weather</p>
+    <Home />
   );
 }
 
