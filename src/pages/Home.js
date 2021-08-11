@@ -39,7 +39,7 @@ function Home() {
                     <Grid className="grid-primary" item xs={12} sm={6} md={4}>
                         <Typography variant="h4" style={{paddingTop: 10}}>{weatherData.name}, {weatherData.sys.country}</Typography>
                         <Typography variant="subtitle1">{weatherData.weather[0].description}</Typography>
-                        <Image src={`/icons/${weatherData.weather[0].icon}.svg`} imageStyle={{height: 300}} style={{backgroundColor: "transparent", paddingTop: "calc(70%)"}}/>
+                        <Image src={`/icons/${weatherData.weather[0].icon}.svg`} imageStyle={{height: 200}} style={{backgroundColor: "transparent", paddingTop: "calc(60%)"}}/>
                         <Typography variant="h2"><strong>{Math.round(weatherData.main.temp)}°C</strong></Typography>
                         <Typography variant="subtitle1">Feels like {Math.round(weatherData.main.feels_like)}°C</Typography>
                     </Grid>
