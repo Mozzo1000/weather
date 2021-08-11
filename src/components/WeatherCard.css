@@ -1,0 +1,6 @@
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 10px;
+    text-align: right;
+}
