@@ -19,3 +19,5 @@ An example React app for showing weather information using [OpenWeather](https:/
 ## License
 This project is licenced under the Apache License, Version 2.0. See [LICENSE](https://github.com/Mozzo1000/weather/blob/master/LICENSE) for the full license.
 
+Weather icons are designed by [Bamdewanto / Freepik](http://www.freepik.com) and are licenced for personal and commerical use. See [terms of use](http://www.freepik.com/terms_of_use) for more information.
+
