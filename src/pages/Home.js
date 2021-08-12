@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Container, Grid, Typography, Box, TextField, InputAdornment } from '@material-ui/core';
+import { Container, Grid, Typography, Box, TextField, InputAdornment, CircularProgress } from '@material-ui/core';
 import Image from 'material-ui-image'
 import "./Home.css"
 import WeatherCard from '../components/WeatherCard'
@@ -11,6 +11,7 @@ import SearchIcon from '@material-ui/icons/Search';
 function Home() {
     const [input, setInput] = useState("London");
     const [weatherData, setWeatherData] = useState();
+    const [error, setError] = useState();
 
     const retrieveData = async () => {
         WeatherData.getWeather(input, false).then(
@@ -19,6 +20,8 @@ function Home() {
                 console.log(response);
             },
             error => {
+                setWeatherData();
+                setError({...error.data});
                 console.log(error.response)
             }
         )
@@ -45,7 +48,7 @@ function Home() {
         "Saturday",
     ];
 
-    return weatherData && !weatherData.message ? (
+    return weatherData ? (
         <Container style={{marginTop: 50}}> {/*FIXME: Actually center dynamically instead of setting a fixed value*/}
             <Box className="grid-container">
                 <Grid container>
@@ -82,15 +85,20 @@ function Home() {
                         <Grid item xs={6} sm={4} md={4}>
                             <WeatherCard image="/icons/sunset.png" name="Sunset" value={parseInt(convertTime(weatherData.sys.sunset, weatherData.timezone)[0].split(":")[0]) + ":" + parseInt(convertTime(weatherData.sys.sunset, weatherData.timezone)[0].split(":")[1])} />
                         </Grid>
+                        <Grid item xs={6} sm={4} md={4}>
+                            <WeatherCard image="/icons/pressure.png" name="Pressure" value={weatherData.main.pressure + " hPA"} />
+                        </Grid>
                     </Grid>
                     </Grid>
                 </Grid>
             </Box>
         </Container>
-    ) : weatherData && weatherData.message ? (   
+    ) : error ? (   
         <p>City not found</p>
     ) : (
-        <p>Loading...</p>
+        <Container>
+            <CircularProgress />
+        </Container>
     );
 }
 
