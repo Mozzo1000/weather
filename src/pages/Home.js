@@ -1,17 +1,19 @@
 import React, {useState, useEffect} from 'react'
-import { Container, Grid, Typography, Box, TextField} from '@material-ui/core';
+import { Container, Grid, Typography, Box, TextField, InputAdornment } from '@material-ui/core';
 import Image from 'material-ui-image'
 import "./Home.css"
 import WeatherCard from '../components/WeatherCard'
 import SvgIcon from '@material-ui/core/SvgIcon';
 import WeatherData from '../services/WeatherData'
 import convertTime from '../Utils'
+import SearchIcon from '@material-ui/icons/Search';
 
 function Home() {
+    const [input, setInput] = useState("London");
     const [weatherData, setWeatherData] = useState();
 
-    useEffect(() => {
-        WeatherData.getWeather('London', true).then(
+    const retrieveData = async () => {
+        WeatherData.getWeather(input, false).then(
             response => {
                 setWeatherData({...response.data});
                 console.log(response);
@@ -20,7 +22,18 @@ function Home() {
                 console.log(error.response)
             }
         )
+    }
+
+    useEffect(() => {
+        retrieveData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    const onSubmit = (e) => {
+        if (e.keyCode === 13) {
+            retrieveData();
+        }
+    }
 
     var weekday = [
         "Sunday",
@@ -52,7 +65,7 @@ function Home() {
                   )[0])}:00</strong></Typography>
                         </Grid>
                         <Grid item xs={12} sm={4} md={6}>
-                            <TextField label="Search by city" variant="outlined" fullWidth/>
+                            <TextField onKeyDown={onSubmit} onChange={(e) => setInput(e.target.value)} label="Search by city" variant="outlined" InputProps={{endAdornment: (<InputAdornment><SearchIcon/></InputAdornment>)}}fullWidth />
                         </Grid>
                         <Grid item xs={6} sm={4} md={4}>
                             <WeatherCard image="/icons/humidity.png" name="Humidity" value={weatherData.main.humidity + "%"} />
